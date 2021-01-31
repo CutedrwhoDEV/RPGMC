@@ -101,6 +101,15 @@
       "locked_code": false,
       "ids": {},
       "registry_name": "knife"
+    },
+    {
+      "name": "Potatoface",
+      "type": "item",
+      "sortid": 9,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "potatoface"
     }
   ],
   "variable_elements": [],
@@ -114,6 +123,7 @@
       "item.rpgmc.hanginjudge_spawn_egg": "Hanginjudge Spawn Egg",
       "item.rpgmc.rifle": "Rifle",
       "item.rpgmc.knife": "Knife",
+      "item.rpgmc.potatoface": "Potatoface",
       "item.rpgmc.revolver": "Revolver"
     }
   },
