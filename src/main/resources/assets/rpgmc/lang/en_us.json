@@ -1,3 +1,5 @@
 {
-  "block.rpgmc.bloodlygravel": "Pp"
+  "entity.rpgmc.hanginjudge": "Hanginjudge",
+  "block.rpgmc.bloodlygravel": "Pp",
+  "item.rpgmc.hanginjudge_spawn_egg": "Hanginjudge Spawn Egg"
 }

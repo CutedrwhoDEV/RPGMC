@@ -9,13 +9,53 @@
       "locked_code": false,
       "ids": {},
       "registry_name": "bloodlygravel"
+    },
+    {
+      "name": "HanginjudgeOnInitialEntitySpawn",
+      "type": "procedure",
+      "sortid": 2,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "hanginjudge_on_initial_entity_spawn",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Hanginjudge",
+      "type": "mob",
+      "sortid": 2,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "hanginjudge"
     }
   ],
   "variable_elements": [],
   "sound_elements": [],
   "language_map": {
     "en_us": {
-      "block.rpgmc.bloodlygravel": "Pp"
+      "entity.rpgmc.hanginjudge": "Hanginjudge",
+      "block.rpgmc.bloodlygravel": "Pp",
+      "item.rpgmc.hanginjudge_spawn_egg": "Hanginjudge Spawn Egg"
     }
   },
   "workspaceSettings": {
