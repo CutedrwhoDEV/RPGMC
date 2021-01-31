@@ -47,6 +47,33 @@
       "locked_code": false,
       "ids": {},
       "registry_name": "hanginjudge"
+    },
+    {
+      "name": "Revolver",
+      "type": "gun",
+      "sortid": 3,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "revolver"
+    },
+    {
+      "name": "Bullet",
+      "type": "item",
+      "sortid": 4,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "bullet"
+    },
+    {
+      "name": "BulletRecipe",
+      "type": "recipe",
+      "sortid": 5,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "bullet_recipe"
     }
   ],
   "variable_elements": [],
@@ -54,8 +81,10 @@
   "language_map": {
     "en_us": {
       "entity.rpgmc.hanginjudge": "Hanginjudge",
-      "block.rpgmc.bloodlygravel": "Pp",
-      "item.rpgmc.hanginjudge_spawn_egg": "Hanginjudge Spawn Egg"
+      "block.rpgmc.bloodlygravel": "BloodyGravel",
+      "item.rpgmc.bullet": "Bullet",
+      "item.rpgmc.hanginjudge_spawn_egg": "Hanginjudge Spawn Egg",
+      "item.rpgmc.revolver": "Revolver"
     }
   },
   "workspaceSettings": {
