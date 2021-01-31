@@ -23,12 +23,9 @@ import net.minecraft.item.ShootableItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.Item;
-import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.entity.projectile.AbstractArrowEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.ai.attributes.AttributeModifier;
-import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.IRendersAsItem;
 import net.minecraft.entity.EntityType;
@@ -41,16 +38,14 @@ import net.mcreator.rpgmc.RpgmcModElements;
 
 import java.util.Random;
 
-import com.google.common.collect.Multimap;
-
 @RpgmcModElements.ModElement.Tag
-public class RevolverItem extends RpgmcModElements.ModElement {
-	@ObjectHolder("rpgmc:revolver")
+public class RifleItem extends RpgmcModElements.ModElement {
+	@ObjectHolder("rpgmc:rifle")
 	public static final Item block = null;
-	@ObjectHolder("rpgmc:entitybulletrevolver")
+	@ObjectHolder("rpgmc:entitybulletrifle")
 	public static final EntityType arrow = null;
-	public RevolverItem(RpgmcModElements instance) {
-		super(instance, 3);
+	public RifleItem(RpgmcModElements instance) {
+		super(instance, 6);
 	}
 
 	@Override
@@ -58,7 +53,7 @@ public class RevolverItem extends RpgmcModElements.ModElement {
 		elements.items.add(() -> new ItemRanged());
 		elements.entities.add(() -> (EntityType.Builder.<ArrowCustomEntity>create(ArrowCustomEntity::new, EntityClassification.MISC)
 				.setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).setCustomClientFactory(ArrowCustomEntity::new)
-				.size(0.5f, 0.5f)).build("entitybulletrevolver").setRegistryName("entitybulletrevolver"));
+				.size(0.5f, 0.5f)).build("entitybulletrifle").setRegistryName("entitybulletrifle"));
 	}
 
 	@Override
@@ -70,7 +65,7 @@ public class RevolverItem extends RpgmcModElements.ModElement {
 	public static class ItemRanged extends Item {
 		public ItemRanged() {
 			super(new Item.Properties().group(ItemGroup.COMBAT).maxDamage(100));
-			setRegistryName("revolver");
+			setRegistryName("rifle");
 		}
 
 		@Override
@@ -81,24 +76,12 @@ public class RevolverItem extends RpgmcModElements.ModElement {
 
 		@Override
 		public UseAction getUseAction(ItemStack itemstack) {
-			return UseAction.SPEAR;
+			return UseAction.BOW;
 		}
 
 		@Override
 		public int getUseDuration(ItemStack itemstack) {
 			return 72000;
-		}
-
-		@Override
-		public Multimap<String, AttributeModifier> getAttributeModifiers(EquipmentSlotType slot) {
-			Multimap<String, AttributeModifier> multimap = super.getAttributeModifiers(slot);
-			if (slot == EquipmentSlotType.MAINHAND) {
-				multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(),
-						new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "ranged_item_damage", (double) 1, AttributeModifier.Operation.ADDITION));
-				multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getName(),
-						new AttributeModifier(ATTACK_SPEED_MODIFIER, "ranged_item_attack_speed", -2.4, AttributeModifier.Operation.ADDITION));
-			}
-			return multimap;
 		}
 
 		@Override
@@ -120,7 +103,7 @@ public class RevolverItem extends RpgmcModElements.ModElement {
 						}
 					}
 					if (entity.abilities.isCreativeMode || stack != ItemStack.EMPTY) {
-						ArrowCustomEntity entityarrow = shoot(world, entity, random, 2f, 5, 5);
+						ArrowCustomEntity entityarrow = shoot(world, entity, random, 1f, 5, 5);
 						itemstack.damageItem(1, entity, e -> e.sendBreakAnimation(entity.getActiveHand()));
 						if (entity.abilities.isCreativeMode) {
 							entityarrow.pickupStatus = AbstractArrowEntity.PickupStatus.CREATIVE_ONLY;
@@ -209,7 +192,7 @@ public class RevolverItem extends RpgmcModElements.ModElement {
 		double y = entity.getPosY();
 		double z = entity.getPosZ();
 		world.playSound((PlayerEntity) null, (double) x, (double) y, (double) z,
-				(net.minecraft.util.SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.firework_rocket.shoot")),
+				(net.minecraft.util.SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.firework_rocket.blast_far")),
 				SoundCategory.PLAYERS, 1, 1f / (random.nextFloat() * 0.5f + 1) + (power / 2));
 		return entityarrow;
 	}
@@ -219,7 +202,7 @@ public class RevolverItem extends RpgmcModElements.ModElement {
 		double d0 = target.getPosY() + (double) target.getEyeHeight() - 1.1;
 		double d1 = target.getPosX() - entity.getPosX();
 		double d3 = target.getPosZ() - entity.getPosZ();
-		entityarrow.shoot(d1, d0 - entityarrow.getPosY() + (double) MathHelper.sqrt(d1 * d1 + d3 * d3) * 0.2F, d3, 2f * 2, 12.0F);
+		entityarrow.shoot(d1, d0 - entityarrow.getPosY() + (double) MathHelper.sqrt(d1 * d1 + d3 * d3) * 0.2F, d3, 1f * 2, 12.0F);
 		entityarrow.setSilent(true);
 		entityarrow.setDamage(5);
 		entityarrow.setKnockbackStrength(5);
@@ -229,7 +212,7 @@ public class RevolverItem extends RpgmcModElements.ModElement {
 		double y = entity.getPosY();
 		double z = entity.getPosZ();
 		entity.world.playSound((PlayerEntity) null, (double) x, (double) y, (double) z,
-				(net.minecraft.util.SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.firework_rocket.shoot")),
+				(net.minecraft.util.SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.firework_rocket.blast_far")),
 				SoundCategory.PLAYERS, 1, 1f / (new Random().nextFloat() * 0.5f + 1));
 		return entityarrow;
 	}

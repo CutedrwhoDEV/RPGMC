@@ -3,9 +3,9 @@
   "_type": "gun",
   "definition": {
     "renderType": 0,
-    "texture": "revolver1",
+    "texture": "rifle",
     "customModelName": "Normal",
-    "name": "Revolver",
+    "name": "Rifle",
     "specialInfo": [],
     "creativeTab": {
       "value": "COMBAT"
@@ -17,13 +17,13 @@
     "shootConstantly": false,
     "usageCount": 100,
     "actionSound": {
-      "value": "entity.firework.shoot"
+      "value": "entity.firework.blast_far"
     },
     "hasGlow": false,
-    "animation": "spear",
-    "enableMeleeDamage": true,
-    "damageVsEntity": 3.0,
-    "bulletPower": 2.0,
+    "animation": "bow",
+    "enableMeleeDamage": false,
+    "damageVsEntity": 0.0,
+    "bulletPower": 1.0,
     "bulletDamage": 5.0,
     "bulletKnockback": 5,
     "bulletParticles": false,

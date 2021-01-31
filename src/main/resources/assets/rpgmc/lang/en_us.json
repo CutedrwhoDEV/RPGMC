@@ -1,7 +1,10 @@
 {
   "entity.rpgmc.hanginjudge": "Hanginjudge",
   "block.rpgmc.bloodlygravel": "BloodyGravel",
+  "item.rpgmc.saber": "Saber",
   "item.rpgmc.bullet": "Bullet",
   "item.rpgmc.hanginjudge_spawn_egg": "Hanginjudge Spawn Egg",
+  "item.rpgmc.rifle": "Rifle",
+  "item.rpgmc.knife": "Knife",
   "item.rpgmc.revolver": "Revolver"
 }
