@@ -24,8 +24,10 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.network.IPacket;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.item.SpawnEggItem;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.Item;
+import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.ai.goal.RandomWalkingGoal;
@@ -47,6 +49,8 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.BlockState;
 
 import net.mcreator.rpgmc.procedures.HanginjudgeOnInitialEntitySpawnProcedure;
+import net.mcreator.rpgmc.item.RevolverItem;
+import net.mcreator.rpgmc.item.BulletItem;
 import net.mcreator.rpgmc.RpgmcModElements;
 
 import java.util.Map;
@@ -104,6 +108,8 @@ public class HanginjudgeEntity extends RpgmcModElements.ModElement {
 			super(type, world);
 			experienceValue = 0;
 			setNoAI(false);
+			this.setItemStackToSlot(EquipmentSlotType.MAINHAND, new ItemStack(RevolverItem.block, (int) (1)));
+			this.setItemStackToSlot(EquipmentSlotType.OFFHAND, new ItemStack(BulletItem.block, (int) (1)));
 		}
 
 		@Override
@@ -149,6 +155,8 @@ public class HanginjudgeEntity extends RpgmcModElements.ModElement {
 
 		@Override
 		public boolean attackEntityFrom(DamageSource source, float amount) {
+			if (source == DamageSource.FALL)
+				return false;
 			if (source == DamageSource.DROWN)
 				return false;
 			if (source == DamageSource.LIGHTNING_BOLT)
